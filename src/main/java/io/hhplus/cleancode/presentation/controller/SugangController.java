@@ -3,6 +3,7 @@ package io.hhplus.cleancode.presentation.controller;
 
 import io.hhplus.cleancode.domain.dto.SugangDto;
 import io.hhplus.cleancode.domain.service.SugangService;
+import io.hhplus.cleancode.infrastructure.entity.SugangHistoryEntity;
 import io.hhplus.cleancode.presentation.HttpDto.SugangRequest;
 import io.hhplus.cleancode.presentation.HttpDto.SugangResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @Slf4j
@@ -40,17 +42,43 @@ public class SugangController {
     }
 
     @GetMapping("/getClassAvail/{classDate}")
-    public List<SugangDto> getClassAvail(@PathVariable("classDate") String classDate) {
+    public List<SugangResponse> getClassAvail(@PathVariable("classDate") String classDate) {
         List<SugangDto> sugangInsertDtoList = sugangService.getClassAvail(new SugangDto(0L,0L,0L,classDate,""));
 
 
-        return  sugangInsertDtoList;
+        return  sugangInsertDtoList.stream()
+                .map(item -> {
+                    SugangResponse sugangResponse = new SugangResponse(
+                            item.getSugangId(),
+                            item.getStudentId(),
+                            item.getAvailNum(),
+                            item.getClassDate(),
+                            item.getClassName(),
+                            "success"
+                    );
+
+                    return sugangResponse;
+                })
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/getUserClassApply/{studentId}")
-    public List<SugangDto> getUserClassApply(@PathVariable("studentId") Long studentId) {
+    public List<SugangResponse> getUserClassApply(@PathVariable("studentId") Long studentId) {
         List<SugangDto> sugangInsertDtoList = sugangService.getClassApplyHistory(new SugangDto(0L,studentId,0L,"",""));
-        return sugangInsertDtoList;
+        return sugangInsertDtoList.stream()
+                .map(item -> {
+                    SugangResponse sugangResponse = new SugangResponse(
+                            item.getSugangId(),
+                            item.getStudentId(),
+                            item.getAvailNum(),
+                            item.getClassDate(),
+                            item.getClassName(),
+                            "success"
+                    );
+
+                    return sugangResponse;
+                })
+                .collect(Collectors.toList());
     }
 //    @Autowired
 //    private QuickService quickService;

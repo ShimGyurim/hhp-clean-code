@@ -5,11 +5,21 @@ package io.hhplus.cleancode.infrastructure.repository;
 import io.hhplus.cleancode.domain.entity.SugangHistory;
 import io.hhplus.cleancode.domain.repository.SugangHistoryRepository;
 import io.hhplus.cleancode.infrastructure.entity.SugangHistoryEntity;
+import io.hhplus.cleancode.infrastructure.mapper.DDDMapper;
 import io.hhplus.cleancode.infrastructure.mapper.SugangHistoryMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class SugangHistoryRepositoryImpl implements SugangHistoryRepository {
+
+//    @Autowired
+//    SugangHistoryMapper sugangHistoryMapper;
+
+    @Autowired
+    DDDMapper dddMapper;
 
     private final SugangHistoryJpaRepository sugangHistoryJpaRepository;
 
@@ -17,12 +27,18 @@ public class SugangHistoryRepositoryImpl implements SugangHistoryRepository {
         this.sugangHistoryJpaRepository=sugangHistoryJpaRepository;
     }
     public <S extends SugangHistory> S save(S pojo) {
-        SugangHistoryEntity sugangHistoryEntity = sugangHistoryJpaRepository.save(SugangHistoryMapper.sugangHistoryToEntity(pojo));
-        return (S) SugangHistoryMapper.sugangHistoryToPojo(sugangHistoryEntity);
+        SugangHistoryEntity sugangHistoryEntity = sugangHistoryJpaRepository.save(dddMapper.sugangHistoryToEntity(pojo));
+        return (S) dddMapper.sugangHistoryToPojo(sugangHistoryEntity);
     }
 
     public List<SugangHistory> findAllByStudent_StudentId(Long studentId) {
-        return SugangHistoryMapper.sugangHistoryToPojoList(
+        return dddMapper.sugangHistoryToPojoList(
                 sugangHistoryJpaRepository.findAllByStudent_StudentId(studentId));
+    }
+
+    public List<SugangHistory> findAllBySugangSchedule_ClassDateAndStudent_StudentId(String classDate,Long studentId){
+        return dddMapper.sugangHistoryToPojoList(
+                sugangHistoryJpaRepository.findAllBySugangSchedule_ClassDateAndStudent_StudentId(classDate,studentId)
+        );
     }
 }

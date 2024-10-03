@@ -41,4 +41,14 @@ public class SugangHistoryRepositoryImpl implements SugangHistoryRepository {
                 sugangHistoryJpaRepository.findAllBySugangSchedule_ClassDateAndStudent_StudentId(classDate,studentId)
         );
     }
+
+    public long countBySugangSchedule_ClassDateAndStudent_StudentId(String classDate, Long studentId){
+        return sugangHistoryJpaRepository.countBySugangSchedule_ClassDateAndStudent_StudentId(classDate,studentId);
+
+    }
+
+    public long countBySugangSchedule_ClassDateAndSugang_SugangId(String classDate,Long sugangId){
+        return sugangHistoryJpaRepository.countBySugangSchedule_ClassDateAndSugang_SugangId( classDate, sugangId);
+
+    }
 }

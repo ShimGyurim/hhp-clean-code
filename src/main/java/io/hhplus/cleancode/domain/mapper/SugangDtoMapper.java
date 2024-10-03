@@ -39,6 +39,7 @@ public class SugangDtoMapper {
                     SugangDto.setClassDate(item.getClassDate());
                     SugangDto.setSugangId(item.getSugang().getSugangId());
                     SugangDto.setTeacher(item.getSugang().getTeacher());
+                    SugangDto.setClassName(item.getSugang().getClassName());
                     SugangDto.setAvailNum(item.getAvailNum());
 
                     return SugangDto;
@@ -55,6 +56,7 @@ public class SugangDtoMapper {
                     SugangDto.setStudentId(item.getStudent().getStudentId());
                     SugangDto.setTeacher(item.getSugang().getTeacher());
                     SugangDto.setClassDate(item.getSugangSchedule().getClassDate());
+                    SugangDto.setClassName(item.getSugang().getClassName());
                     SugangDto.setAvailNum(item.getSugangSchedule().getAvailNum());
                     return SugangDto;
                 })

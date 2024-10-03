@@ -13,7 +13,18 @@ public class SugangHistory {
 
     private Student student;
 
-//    private String classDate;
+
+    public SugangHistory() {
+    }
+
+    public SugangHistory(Long historyId, SugangSchedule sugangSchedule, Sugang sugang, Student student) {
+        this.historyId = historyId;
+        this.sugangSchedule = sugangSchedule;
+        this.sugang = sugang;
+        this.student = student;
+    }
+
+    //    private String classDate;
 
     public void setHistoryId(Long historyId) {
         this.historyId = historyId;

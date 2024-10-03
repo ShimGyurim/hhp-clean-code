@@ -19,4 +19,8 @@ public interface SugangHistoryRepository  {
     List<SugangHistory> findAllByStudent_StudentId(Long studentId);
 
     List<SugangHistory> findAllBySugangSchedule_ClassDateAndStudent_StudentId(String classDate,Long studentId) ;
+
+    long countBySugangSchedule_ClassDateAndStudent_StudentId(String classDate,Long studentId);
+
+    long countBySugangSchedule_ClassDateAndSugang_SugangId(String classDate,Long sugangId);
 }

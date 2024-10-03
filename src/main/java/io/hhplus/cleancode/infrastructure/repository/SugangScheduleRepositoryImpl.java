@@ -5,6 +5,8 @@ import io.hhplus.cleancode.domain.repository.SugangScheduleRepository;
 import io.hhplus.cleancode.infrastructure.entity.SugangScheduleEntity;
 import io.hhplus.cleancode.infrastructure.mapper.DDDMapper;
 import io.hhplus.cleancode.infrastructure.mapper.SugangScheduleMapper;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.LockModeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -46,5 +48,14 @@ public class SugangScheduleRepositoryImpl implements SugangScheduleRepository {
         List<SugangScheduleEntity> sugangScheduleEntities = sugangScheduleJpaRepository.findAllByClassDateGreaterThanEqual(classDate);
         return dddMapper.sugangScheduleToPojoList(sugangScheduleEntities);
     }
+
+    public SugangSchedule lockStart(Long sugangSchedule_id, EntityManager entityManager) {
+        return dddMapper.sugangScheduleToPojo(entityManager.find(SugangScheduleEntity.class, sugangSchedule_id, LockModeType.PESSIMISTIC_WRITE)) ;
+    }
+
+    public SugangSchedule findById(Long scheduleId){
+        return dddMapper.sugangScheduleToPojo(sugangScheduleJpaRepository.findById(scheduleId).get());
+    }
+
 
 }

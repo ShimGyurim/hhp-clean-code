@@ -25,4 +25,8 @@ public interface SugangHistoryJpaRepository extends JpaRepository<SugangHistoryE
     List<SugangHistoryEntity> findAllByStudent_StudentId(Long studentId);
 
     List<SugangHistoryEntity> findAllBySugangSchedule_ClassDateAndStudent_StudentId(String classDate,Long studentId);
+
+    long countBySugangSchedule_ClassDateAndStudent_StudentId(String classDate,Long studentId);
+
+    long countBySugangSchedule_ClassDateAndSugang_SugangId(String classDate,Long sugangId);
 }

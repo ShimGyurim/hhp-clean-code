@@ -12,12 +12,16 @@ import java.util.Optional;
 @Repository
 public interface SugangScheduleJpaRepository extends JpaRepository<SugangScheduleEntity, Long> {
 
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     Optional<SugangScheduleEntity> findBySugang_SugangIdAndClassDate(Long sugang, String classDate);
 
     @Override
-//    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     <S extends SugangScheduleEntity> S save(S entity);
 
     List<SugangScheduleEntity> findAllByClassDateGreaterThanEqual(String classDate);
 
+    @Override
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    Optional<SugangScheduleEntity> findById(Long scheduleId);
 }

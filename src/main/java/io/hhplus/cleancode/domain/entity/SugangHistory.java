@@ -1,35 +1,34 @@
-package io.hhplus.cleancode.infrastructure.entity;
+package io.hhplus.cleancode.domain.entity;
 
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name="SugangHistory", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"sugang_id", "studentId", "classDate"})
-})
 public class SugangHistory {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long historyId;
 
-    @ManyToOne
-    @JoinColumn(name = "sugangschedule_id", referencedColumnName = "sugangschedule_id")
-//    @Column(nullable = false)
     private SugangSchedule sugangSchedule;
 
-    @ManyToOne
-    @JoinColumn(name = "sugang_id", referencedColumnName = "sugang_id")
-//    @Column(nullable = false)
     private Sugang sugang;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "student_id")
-//    @Column(nullable = false)
     private Student student;
 
-    @Column(nullable = false)
-    private String classDate;
+
+    public SugangHistory() {
+    }
+
+    public SugangHistory(Long historyId, SugangSchedule sugangSchedule, Sugang sugang, Student student) {
+        this.historyId = historyId;
+        this.sugangSchedule = sugangSchedule;
+        this.sugang = sugang;
+        this.student = student;
+    }
+
+    //    private String classDate;
+
+    public void setHistoryId(Long historyId) {
+        this.historyId = historyId;
+    }
 
     public void setSugangSchedule(SugangSchedule sugangSchedule) {
         this.sugangSchedule = sugangSchedule;
@@ -43,9 +42,9 @@ public class SugangHistory {
         this.student = student;
     }
 
-    public void setClassDate(String classDate) {
-        this.classDate = classDate;
-    }
+//    public void setClassDate(String classDate) {
+//        this.classDate = classDate;
+//    }
 
     public Long getHistoryId() {
         return historyId;
@@ -63,9 +62,9 @@ public class SugangHistory {
         return student;
     }
 
-    public String getClassDate() {
-        return classDate;
-    }
+//    public String getClassDate() {
+//        return classDate;
+//    }
 
     @Override
     public String toString() {
@@ -74,7 +73,7 @@ public class SugangHistory {
                 ", sugangSchedule=" + sugangSchedule +
                 ", sugang=" + sugang +
                 ", student=" + student +
-                ", classDate='" + classDate + '\'' +
+//                ", classDate='" + classDate + '\'' +
                 '}';
     }
 }

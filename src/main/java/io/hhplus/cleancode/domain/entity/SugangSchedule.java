@@ -1,33 +1,30 @@
-package io.hhplus.cleancode.infrastructure.entity;
+package io.hhplus.cleancode.domain.entity;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name="SugangSchedule", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"sugang_id", "student_id", "classdate"})
-})
 public class SugangSchedule {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="sugangschedule_id")
     private Long scheduleId;
 
-    @ManyToOne
-    @JoinColumn(name = "sugang_id", referencedColumnName = "sugang_id")
-//    @Column(nullable = false)
     private Sugang sugang;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "student_id")
-//    @Column(nullable = false)
-    private Student student;
-
-    @Column(nullable = false, name="classdate")
     private String classDate;
 
-    @Column(nullable = true)
     private Long availNum;
+
+    public SugangSchedule() {
+    }
+
+    public SugangSchedule(Long scheduleId, Sugang sugang, String classDate, Long availNum) {
+        this.scheduleId = scheduleId;
+        this.sugang = sugang;
+        this.classDate = classDate;
+        this.availNum = availNum;
+    }
+
+    public void setScheduleId(Long scheduleId) {
+        this.scheduleId = scheduleId;
+    }
 
     public Long getScheduleId() {
         return scheduleId;
@@ -39,14 +36,6 @@ public class SugangSchedule {
 
     public void setSugang(Sugang sugang) {
         this.sugang = sugang;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
     }
 
     public String getClassDate() {
@@ -69,8 +58,8 @@ public class SugangSchedule {
     public String toString() {
         return "SugangSchedule{" +
                 "scheduleId=" + scheduleId +
-                ", sugang=" + sugang +
-                ", student=" + student +
+                ", sugang=" + sugang.toString() +
+//                ", student=" + student +
                 ", classDate='" + classDate + '\'' +
                 ", availNum=" + availNum +
                 '}';

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="SUGANG")
-public class Sugang {
+public class SugangEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="sugang_id")
@@ -12,10 +12,20 @@ public class Sugang {
 
     private String className;
 
-    public Sugang() {
+    private String teacher;
+
+    public SugangEntity() {
     }
 
-    public Sugang(Long sugangId) {
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
+    }
+
+    public SugangEntity(Long sugangId) {
         this.sugangId = sugangId;
     }
 
@@ -36,12 +46,12 @@ public class Sugang {
     }
 
 
-
     @Override
     public String toString() {
-        return "Sugang{" +
+        return "SugangEntity{" +
                 "sugangId=" + sugangId +
                 ", className='" + className + '\'' +
+                ", teacher='" + teacher + '\'' +
                 '}';
     }
 }

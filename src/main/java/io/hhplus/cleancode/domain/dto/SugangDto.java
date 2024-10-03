@@ -1,4 +1,4 @@
-package io.hhplus.cleancode.application.dto;
+package io.hhplus.cleancode.domain.dto;
 
 public class SugangDto {
     private long sugangId;
@@ -6,16 +6,26 @@ public class SugangDto {
     private long availNum;
     private String classDate;
     private String className;
+    private String teacher;
 
     public SugangDto() {
     }
 
-    public SugangDto(long sugangId, long studentId, long availNum, String classDate, String className) {
+    public SugangDto(long sugangId, long studentId, long availNum, String classDate, String className, String teacher) {
         this.sugangId = sugangId;
         this.studentId = studentId;
         this.availNum = availNum;
         this.classDate = classDate;
         this.className = className;
+        this.teacher = teacher;
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 
     public long getSugangId() {

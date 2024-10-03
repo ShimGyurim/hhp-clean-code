@@ -28,11 +28,15 @@ public class SugangHistoryEntity {
 //    @Column(nullable = false)
     private StudentEntity student;
 
-    @Column(nullable = false)
-    private String classDate;
+//    @Column(nullable = false)
+//    private String classDate;
 
     public void setSugangSchedule(SugangScheduleEntity sugangSchedule) {
         this.sugangSchedule = sugangSchedule;
+    }
+
+    public void setHistoryId(Long historyId) {
+        this.historyId = historyId;
     }
 
     public void setSugang(SugangEntity sugang) {
@@ -43,9 +47,9 @@ public class SugangHistoryEntity {
         this.student = student;
     }
 
-    public void setClassDate(String classDate) {
-        this.classDate = classDate;
-    }
+//    public void setClassDate(String classDate) {
+//        this.classDate = classDate;
+//    }
 
     public Long getHistoryId() {
         return historyId;
@@ -63,9 +67,9 @@ public class SugangHistoryEntity {
         return student;
     }
 
-    public String getClassDate() {
-        return classDate;
-    }
+//    public String getClassDate() {
+//        return classDate;
+//    }
 
     @Override
     public String toString() {
@@ -74,7 +78,7 @@ public class SugangHistoryEntity {
                 ", sugangSchedule=" + sugangSchedule +
                 ", sugang=" + sugang +
                 ", student=" + student +
-                ", classDate='" + classDate + '\'' +
+//                ", classDate='" + classDate + '\'' +
                 '}';
     }
 }

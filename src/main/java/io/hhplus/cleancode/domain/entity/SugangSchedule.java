@@ -12,6 +12,20 @@ public class SugangSchedule {
 
     private Long availNum;
 
+    public SugangSchedule() {
+    }
+
+    public SugangSchedule(Long scheduleId, Sugang sugang, String classDate, Long availNum) {
+        this.scheduleId = scheduleId;
+        this.sugang = sugang;
+        this.classDate = classDate;
+        this.availNum = availNum;
+    }
+
+    public void setScheduleId(Long scheduleId) {
+        this.scheduleId = scheduleId;
+    }
+
     public Long getScheduleId() {
         return scheduleId;
     }
@@ -44,7 +58,7 @@ public class SugangSchedule {
     public String toString() {
         return "SugangSchedule{" +
                 "scheduleId=" + scheduleId +
-                ", sugang=" + sugang +
+                ", sugang=" + sugang.toString() +
 //                ", student=" + student +
                 ", classDate='" + classDate + '\'' +
                 ", availNum=" + availNum +

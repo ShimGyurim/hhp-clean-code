@@ -15,9 +15,9 @@ public interface SugangScheduleJpaRepository extends JpaRepository<SugangSchedul
     Optional<SugangScheduleEntity> findBySugang_SugangIdAndClassDate(Long sugang, String classDate);
 
     @Override
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
+//    @Lock(LockModeType.PESSIMISTIC_WRITE)
     <S extends SugangScheduleEntity> S save(S entity);
 
-    List<SugangScheduleEntity> findAllByClassDate(String classDate);
+    List<SugangScheduleEntity> findAllByClassDateGreaterThanEqual(String classDate);
 
 }

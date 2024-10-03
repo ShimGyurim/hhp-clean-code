@@ -29,6 +29,28 @@ public class SugangScheduleEntity {
     @Column(nullable = true)
     private Long availNum;
 
+
+    public SugangScheduleEntity() {
+    }
+
+    public SugangScheduleEntity(Long scheduleId, SugangEntity sugang, String classDate, Long availNum) {
+        this.scheduleId = scheduleId;
+        this.sugang = sugang;
+        this.classDate = classDate;
+        this.availNum = availNum;
+    }
+
+    public void setData(Long scheduleId, SugangEntity sugang, String classDate, Long availNum) {
+        this.scheduleId = scheduleId;
+        this.sugang = sugang;
+        this.classDate = classDate;
+        this.availNum = availNum;
+    }
+
+    public void setScheduleId(Long scheduleId) {
+        this.scheduleId = scheduleId;
+    }
+
     public Long getScheduleId() {
         return scheduleId;
     }
@@ -69,7 +91,7 @@ public class SugangScheduleEntity {
     public String toString() {
         return "SugangSchedule{" +
                 "scheduleId=" + scheduleId +
-                ", sugang=" + sugang +
+                ", sugang=" + sugang.toString() +
 //                ", student=" + student +
                 ", classDate='" + classDate + '\'' +
                 ", availNum=" + availNum +

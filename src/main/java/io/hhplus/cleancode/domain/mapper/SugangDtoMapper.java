@@ -1,9 +1,9 @@
 package io.hhplus.cleancode.domain.mapper;
 
 import io.hhplus.cleancode.domain.dto.SugangDto;
-import io.hhplus.cleancode.infrastructure.entity.SugangEntity;
-import io.hhplus.cleancode.infrastructure.entity.SugangHistoryEntity;
-import io.hhplus.cleancode.infrastructure.entity.SugangScheduleEntity;
+import io.hhplus.cleancode.domain.entity.Sugang;
+import io.hhplus.cleancode.domain.entity.SugangHistory;
+import io.hhplus.cleancode.domain.entity.SugangSchedule;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,43 +15,47 @@ public class SugangDtoMapper {
     @Autowired
     ModelMapper modelMapper;
 
-    public static List<SugangScheduleEntity> toSugangSchedulesMapper(List<SugangDto> dtos) {
-        return dtos.stream()
-                .map(dto -> {
-                    SugangScheduleEntity schedule = new SugangScheduleEntity();
+//    public static List<SugangSchedule> toSugangSchedulesMapper(List<SugangDto> dtos) {
+//        return dtos.stream()
+//                .map(dto -> {
+//                    SugangSchedule schedule = new SugangSchedule();
+//
+//                    schedule.setClassDate(dto.getClassDate());
+//                    schedule.setAvailNum(dto.getAvailNum());
+//                    schedule.setSugang(new Sugang(dto.getSugangId()));
+////                    schedule.setStudent(new Student(dto.getStudentId()));
+//                    return schedule;
+//                })
+//                .collect(Collectors.toList());
+//    }
 
-                    schedule.setClassDate(dto.getClassDate());
-                    schedule.setAvailNum(dto.getAvailNum());
-                    schedule.setSugang(new SugangEntity(dto.getSugangId()));
-//                    schedule.setStudent(new Student(dto.getStudentId()));
-                    return schedule;
-                })
-                .collect(Collectors.toList());
-    }
 
 
-
-    public static List<SugangDto> toSugangDtoMapper(List<SugangScheduleEntity> entities) {
+    public static List<SugangDto> scheduleToSugangDtoMapper(List<SugangSchedule> entities) {
         return entities.stream()
-                .map(entity -> {
+                .map( item -> {
                     SugangDto SugangDto = new SugangDto();
 
-                    SugangDto.setClassDate(entity.getClassDate());
-                    SugangDto.setSugangId(entity.getSugang().getSugangId());
-//                    SugangDto.setStudentId(entity.getStudent().getStudentId());
+                    SugangDto.setClassDate(item.getClassDate());
+                    SugangDto.setSugangId(item.getSugang().getSugangId());
+                    SugangDto.setTeacher(item.getSugang().getTeacher());
+                    SugangDto.setAvailNum(item.getAvailNum());
+
                     return SugangDto;
                 })
                 .collect(Collectors.toList());
     }
     
-    public static List<SugangDto> historyToSugangDtoMapper(List<SugangHistoryEntity> entities) {
+    public static List<SugangDto> historyToSugangDtoMapper(List<SugangHistory> entities) {
         return entities.stream()
-                .map(entity -> {
+                .map( item -> {
                     SugangDto SugangDto = new SugangDto();
 
-                    SugangDto.setClassDate(entity.getClassDate());
-                    SugangDto.setSugangId(entity.getSugang().getSugangId());
-                    SugangDto.setStudentId(entity.getStudent().getStudentId());
+                    SugangDto.setSugangId(item.getSugang().getSugangId());
+                    SugangDto.setStudentId(item.getStudent().getStudentId());
+                    SugangDto.setTeacher(item.getSugang().getTeacher());
+                    SugangDto.setClassDate(item.getSugangSchedule().getClassDate());
+                    SugangDto.setAvailNum(item.getSugangSchedule().getAvailNum());
                     return SugangDto;
                 })
                 .collect(Collectors.toList());

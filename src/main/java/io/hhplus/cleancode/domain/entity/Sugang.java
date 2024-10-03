@@ -9,7 +9,17 @@ public class Sugang {
 
     private String className;
 
+    private String teacher;
+
     public Sugang() {
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 
     public Sugang(Long sugangId) {
@@ -33,12 +43,18 @@ public class Sugang {
     }
 
 
+    public Sugang(Long sugangId, String className, String teacher) {
+        this.sugangId = sugangId;
+        this.className = className;
+        this.teacher = teacher;
+    }
 
     @Override
     public String toString() {
         return "Sugang{" +
                 "sugangId=" + sugangId +
                 ", className='" + className + '\'' +
+                ", teacher='" + teacher + '\'' +
                 '}';
     }
 }

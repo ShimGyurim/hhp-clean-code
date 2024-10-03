@@ -13,7 +13,11 @@ public class SugangHistory {
 
     private Student student;
 
-    private String classDate;
+//    private String classDate;
+
+    public void setHistoryId(Long historyId) {
+        this.historyId = historyId;
+    }
 
     public void setSugangSchedule(SugangSchedule sugangSchedule) {
         this.sugangSchedule = sugangSchedule;
@@ -27,9 +31,9 @@ public class SugangHistory {
         this.student = student;
     }
 
-    public void setClassDate(String classDate) {
-        this.classDate = classDate;
-    }
+//    public void setClassDate(String classDate) {
+//        this.classDate = classDate;
+//    }
 
     public Long getHistoryId() {
         return historyId;
@@ -47,9 +51,9 @@ public class SugangHistory {
         return student;
     }
 
-    public String getClassDate() {
-        return classDate;
-    }
+//    public String getClassDate() {
+//        return classDate;
+//    }
 
     @Override
     public String toString() {
@@ -58,7 +62,7 @@ public class SugangHistory {
                 ", sugangSchedule=" + sugangSchedule +
                 ", sugang=" + sugang +
                 ", student=" + student +
-                ", classDate='" + classDate + '\'' +
+//                ", classDate='" + classDate + '\'' +
                 '}';
     }
 }

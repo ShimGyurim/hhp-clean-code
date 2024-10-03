@@ -12,7 +12,17 @@ public class SugangEntity {
 
     private String className;
 
+    private String teacher;
+
     public SugangEntity() {
+    }
+
+    public String getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 
     public SugangEntity(Long sugangId) {
@@ -36,12 +46,12 @@ public class SugangEntity {
     }
 
 
-
     @Override
     public String toString() {
-        return "Sugang{" +
+        return "SugangEntity{" +
                 "sugangId=" + sugangId +
                 ", className='" + className + '\'' +
+                ", teacher='" + teacher + '\'' +
                 '}';
     }
 }

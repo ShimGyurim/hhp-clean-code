@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface SugangHistoryJpaRepository extends JpaRepository<SugangHistoryEntity, Long> {
     @Override
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
+//    @Lock(LockModeType.PESSIMISTIC_WRITE)
     <S extends SugangHistoryEntity> S save(S entity);
 
 //    @Override
@@ -23,4 +23,6 @@ public interface SugangHistoryJpaRepository extends JpaRepository<SugangHistoryE
 //    List<SugangHistory> findAllById(Iterable<Long> longs);
 
     List<SugangHistoryEntity> findAllByStudent_StudentId(Long studentId);
+
+    List<SugangHistoryEntity> findAllBySugangSchedule_ClassDateAndStudent_StudentId(String classDate,Long studentId);
 }

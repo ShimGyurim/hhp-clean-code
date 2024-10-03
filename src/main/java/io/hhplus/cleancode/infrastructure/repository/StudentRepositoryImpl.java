@@ -3,10 +3,7 @@ package io.hhplus.cleancode.infrastructure.repository;
 import io.hhplus.cleancode.domain.entity.Student;
 import io.hhplus.cleancode.domain.repository.StudentRepository;
 import io.hhplus.cleancode.infrastructure.entity.StudentEntity;
-import io.hhplus.cleancode.infrastructure.entity.SugangEntity;
 import io.hhplus.cleancode.infrastructure.mapper.DDDMapper;
-import io.hhplus.cleancode.infrastructure.mapper.StudentMapper;
-import io.hhplus.cleancode.infrastructure.mapper.SugangMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

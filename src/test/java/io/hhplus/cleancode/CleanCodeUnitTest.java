@@ -103,9 +103,7 @@ public class CleanCodeUnitTest {
 
         Mockito.when(sugangScheduleRepository.findBySugang_SugangIdAndClassDate(ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(Optional.of(sugangSchedule));
         Mockito.when(sugangScheduleRepository.lockStart(ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(sugangSchedule);
-//        Mockito.when(sugangHistoryRepository.findAllBySugangSchedule_ClassDateAndStudent_StudentId(ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(Collections.emptyList());
 
-//        Mockito.when(sugangHistoryRepository.findAllBySugangSchedule_ClassDateAndStudent_StudentId(ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(Collections.emptyList());
 
         Mockito.verify(sugangHistoryRepository, Mockito.never()).findAllBySugangSchedule_ClassDateAndStudent_StudentId(ArgumentMatchers.any(),ArgumentMatchers.any());
         // when
@@ -127,16 +125,9 @@ public class CleanCodeUnitTest {
         sugangSchedule.setAvailNum(null);
 
         Mockito.when(sugangScheduleRepository.findBySugang_SugangIdAndClassDate(ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(Optional.of(sugangSchedule));
-//        Mockito.when(sugangScheduleRepository.lockStart(ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(sugangSchedule);
-
-//        Mockito.when(sugangHistoryRepository.findAllBySugangSchedule_ClassDateAndStudent_StudentId(ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(Collections.emptyList());
-
-//        Mockito.verify(sugangScheduleRepository, Mockito.never()).findBySugang_SugangIdAndClassDate(ArgumentMatchers.any(),ArgumentMatchers.any());
         Mockito.verify(sugangHistoryRepository, Mockito.never()).findAllBySugangSchedule_ClassDateAndStudent_StudentId(ArgumentMatchers.any(),ArgumentMatchers.any());
-//        String result = sugangService.apply(sugangInsertDto);
 
         Assertions.assertThrows(RuntimeException.class, () -> sugangService.apply(sugangInsertDto));
-//        Assertions.assertEquals("fail:no_seat", result);
         Mockito.verify(sugangScheduleRepository, Mockito.never()).save(sugangSchedule);
         Mockito.verify(sugangHistoryRepository, Mockito.never()).save(ArgumentMatchers.any(SugangHistory.class));
     }
@@ -150,16 +141,11 @@ public class CleanCodeUnitTest {
 
 
         Mockito.when(sugangScheduleRepository.findBySugang_SugangIdAndClassDate(ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(Optional.empty());
-//        Mockito.when(sugangScheduleRepository.lockStart(ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(sugangSchedule);
 
-//        Mockito.when(sugangHistoryRepository.findAllBySugangSchedule_ClassDateAndStudent_StudentId(ArgumentMatchers.any(), ArgumentMatchers.any())).thenReturn(Collections.emptyList());
 
-//        Mockito.verify(sugangScheduleRepository, Mockito.never()).findBySugang_SugangIdAndClassDate(ArgumentMatchers.any(),ArgumentMatchers.any());
         Mockito.verify(sugangHistoryRepository, Mockito.never()).findAllBySugangSchedule_ClassDateAndStudent_StudentId(ArgumentMatchers.any(),ArgumentMatchers.any());
-//        String result = sugangService.apply(sugangInsertDto);
 
         Assertions.assertThrows(DataAccessResourceFailureException.class, () -> sugangService.apply(sugangInsertDto));
-//        Assertions.assertEquals("fail:no_seat", result);
         Mockito.verify(sugangScheduleRepository, Mockito.never()).save(sugangSchedule);
         Mockito.verify(sugangHistoryRepository, Mockito.never()).save(ArgumentMatchers.any(SugangHistory.class));
     }
@@ -251,9 +237,5 @@ public class CleanCodeUnitTest {
         Mockito.verifyNoInteractions(sugangHistoryRepository); // 리포지토리가 호출되지 않았는지 검증
     }
 
-//    public Date convertStringToDate(String dateString) throws ParseException {
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd"); // 8자리 날짜 형식 지정
-//        return sdf.parse(dateString);
-//    }
 
 }

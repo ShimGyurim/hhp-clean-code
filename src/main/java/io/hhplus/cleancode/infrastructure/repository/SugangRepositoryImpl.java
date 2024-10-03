@@ -4,7 +4,6 @@ import io.hhplus.cleancode.domain.entity.Sugang;
 import io.hhplus.cleancode.domain.repository.SugangRepository;
 import io.hhplus.cleancode.infrastructure.entity.SugangEntity;
 import io.hhplus.cleancode.infrastructure.mapper.DDDMapper;
-import io.hhplus.cleancode.infrastructure.mapper.SugangMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,8 +12,6 @@ import java.util.Optional;
 @Repository
 public class SugangRepositoryImpl implements SugangRepository {
 
-//    @Autowired
-//    SugangMapper sugangMapper;
 
     @Autowired
     DDDMapper dddMapper;

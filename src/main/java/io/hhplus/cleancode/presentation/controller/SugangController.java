@@ -21,15 +21,6 @@ public class SugangController {
     @Autowired
     SugangService sugangService;
 
-//    @GetMapping("/insert/{studentId}/{sugangId}/{availNum}/{sugangName}/{classDate}")
-//    public String insert(@PathVariable("studentId") Long studentId,
-//                        @PathVariable("sugangId") Long sugangId,
-//                         @PathVariable("availNum") Long availNum,
-//                        @PathVariable("sugangName") String sugangName,
-//                        @PathVariable("classDate") String classDate) {
-//        sugangService.insert(new SugangDto(sugangId,studentId,availNum,classDate,sugangName,null));
-//        return null;
-//    }
 
     @PostMapping("/apply")
     public String apply(@RequestBody SugangRequest sugangRequest) {

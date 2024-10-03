@@ -83,9 +83,7 @@ class CleanCodeIntegrationTests {
 				try {
 					int threadId = threadIdGenerator.getAndIncrement();
 					startSignal.await();
-//					new SugangDto(1L,4L,0L,"20240801","1","1");
 					SugangDto sugangDto = new SugangDto(sugangId, (long) studentId, 0L, "20240805", "e", "jeong");
-//					System.out.println("쓰레드 "+studentId);
 					sugangService.apply(sugangDto);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -98,8 +96,8 @@ class CleanCodeIntegrationTests {
 		startSignal.countDown(); // 모든 스레드 시작
 		doneSignal.await(); // 모든 스레드 종료
 
+		//결과
 		Assertions.assertEquals(30L,sugangHistoryJpaRepository.countBySugangSchedule_ClassDateAndSugang_SugangId("20240805",5L));
-		// then
 		// 수강 신청 성공 건수 확인 (예: 30건)
 	}
 }

@@ -4,7 +4,6 @@ import io.hhplus.cleancode.domain.entity.SugangSchedule;
 import io.hhplus.cleancode.domain.repository.SugangScheduleRepository;
 import io.hhplus.cleancode.infrastructure.entity.SugangScheduleEntity;
 import io.hhplus.cleancode.infrastructure.mapper.DDDMapper;
-import io.hhplus.cleancode.infrastructure.mapper.SugangScheduleMapper;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.LockModeType;
 import org.springframework.beans.factory.annotation.Autowired;

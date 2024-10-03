@@ -6,7 +6,6 @@ import io.hhplus.cleancode.domain.entity.SugangHistory;
 import io.hhplus.cleancode.domain.repository.SugangHistoryRepository;
 import io.hhplus.cleancode.infrastructure.entity.SugangHistoryEntity;
 import io.hhplus.cleancode.infrastructure.mapper.DDDMapper;
-import io.hhplus.cleancode.infrastructure.mapper.SugangHistoryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

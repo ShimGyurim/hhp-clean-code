@@ -10,17 +10,9 @@ public class StudentEntity {
     @Column(name="student_id")
     private Long studentId;
 
-//    private String name;
 
     public Long getStudentId() {
         return studentId;
-    }
-
-    public StudentEntity() {
-    }
-
-    public StudentEntity(Long studentId) {
-        this.studentId = studentId;
     }
 
     public void setStudentId(Long studentId) {

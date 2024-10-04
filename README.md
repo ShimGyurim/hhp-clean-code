@@ -1,6 +1,7 @@
 ## ERD 소개 및 프로그램 기능
 
-![image](https://github.com/user-attachments/assets/6ae3ff21-92e5-41e5-9e47-ce5582bd9087)
+![image](https://github.com/user-attachments/assets/c89180ba-6e99-41ef-80c4-2e83d859e522)
+
 
 1. Student: 학생 메인정보
 2. Sugang: 강의 메인정보
